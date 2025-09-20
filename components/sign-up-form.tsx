@@ -40,11 +40,10 @@ export function SignUpForm({
     }
 
     try {
-      const { error } = await supabase.auth.signUp({
-        email,
-        password,
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: "azure",
         options: {
-          emailRedirectTo: `${window.location.origin}/protected`,
+          scopes: "email",
         },
       });
       if (error) throw error;
@@ -72,7 +71,6 @@ export function SignUpForm({
                   id="email"
                   type="email"
                   placeholder="m@example.com"
-                  required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -84,7 +82,6 @@ export function SignUpForm({
                 <Input
                   id="password"
                   type="password"
-                  required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
@@ -96,7 +93,6 @@ export function SignUpForm({
                 <Input
                   id="repeat-password"
                   type="password"
-                  required
                   value={repeatPassword}
                   onChange={(e) => setRepeatPassword(e.target.value)}
                 />
