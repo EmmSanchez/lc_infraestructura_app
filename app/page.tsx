@@ -3,6 +3,11 @@ import Image from "next/image";
 import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://lc-infraestructura-app.vercel.app/"
+    : "http://localhost:3000";
+
 export default function Home() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -15,7 +20,7 @@ export default function Home() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "azure",
         options: {
-          redirectTo: "http://localhost:3000/auth/callback?next=/protected",
+          redirectTo: `${baseUrl}/auth/callback?next=/protected`,
           scopes: "email offline_access",
         },
       });
