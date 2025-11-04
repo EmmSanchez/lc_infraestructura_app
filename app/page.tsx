@@ -4,7 +4,7 @@ import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-const redirectUrl = `${baseUrl}/auth/callback?next=/protected`;
+const redirectUrl = `${baseUrl}/auth/callback?next=/dashboard`;
 
 export default function Home() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -32,21 +32,34 @@ export default function Home() {
   };
 
   return (
-    <div className="w-full h-dvh flex flex-row text-black">
-      <div className="w-[900px] min-h-screen relative">
+    <div className="relative w-full h-dvh flex flex-row text-black">
+      <div className="max-md:hidden w-[900px] min-h-screen relative">
         <Image
           src={"/assets/img/login_wallpaper.jpg"}
-          layout="fill"
-          objectFit="cover"
+          fill
+          priority
+          sizes="900px"
           alt="Login image wallpaper"
-          className="h-full"
+          className="h-full object-cover"
         />
       </div>
 
-      <div className="flex flex-1 justify-center items-center flex-col">
-        <div className="w-[440px]">
-          <h1 className="font-bold pb-10 text-2xl text-center">
-            LC Infraestructura
+      {/* Lado derecho */}
+      <div className="flex flex-1 justify-center items-center flex-col mx-10">
+        <div className="w-full max-w-[440px] md:w-[440px]">
+          <h1 className="font-bold pb-6 pt-12 text-2xl text-center">
+            <span className="flex items-center justify-center gap-2">
+              <span className="relative inline-block w-[1em] h-[1em] align-middle">
+                <Image
+                  src="/assets/logos/logo.png"
+                  alt="Logo LC"
+                  fill
+                  sizes="1em"
+                  className="object-contain"
+                />
+              </span>
+              <span className="leading-none">LC Infraestructura</span>
+            </span>
           </h1>
 
           <h2 className="font-medium text-4xl text-neutral-800 pb-6">
@@ -117,6 +130,7 @@ export default function Home() {
                           src={"/assets/icons/eye-closed.svg"}
                           layout="fill"
                           alt="Eye hide password"
+                          className="opacity-60"
                         />
                       </>
                     ) : (
@@ -126,6 +140,7 @@ export default function Home() {
                           layout="fill"
                           objectFit="cover"
                           alt="Eye password"
+                          className="opacity-60"
                         />
                       </>
                     )}

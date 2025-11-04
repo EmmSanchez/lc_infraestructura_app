@@ -6,8 +6,11 @@ const defaultUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
-  description: "The fastest way to build apps with Next.js and Supabase",
+  title: "LC Infraestructura",
+  description: "Portal de control de contratos",
+  icons: {
+    icon: "/assets/icons/favicon.ico",
+  },
 };
 
 const geistSans = Geist({
@@ -23,7 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.className} antialiased bg-white`}>
+      <body
+        className={`${geistSans.className} antialiased bg-white`}
+        suppressHydrationWarning={true}
+      >
         {children}
       </body>
     </html>

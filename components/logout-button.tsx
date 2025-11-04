@@ -1,7 +1,6 @@
 "use client";
 
 import { createClient } from "@/lib/supabase/client";
-import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 
 export function LogoutButton() {
@@ -13,5 +12,12 @@ export function LogoutButton() {
     router.push("/");
   };
 
-  return <Button onClick={logout}>Cerrar Sesión</Button>;
+  return (
+    <button
+      onClick={logout}
+      className="bg-red-600 text-white font-extrabold px-4 py-2 rounded-2xl hover:bg-red-700 transition-colors hover:cursor-pointer"
+    >
+      Cerrar Sesión
+    </button>
+  );
 }

@@ -1,0 +1,29 @@
+"use client";
+import { usePathname } from "next/navigation";
+import BackButtonClient from "./BackButtonClient";
+import { useProjectStore } from "@/app/stores/useProjectStore";
+import { LogoutButton } from "./logout-button";
+
+export default function Navbar() {
+  const pathname = usePathname();
+  const currentProject = useProjectStore((state) => state.currentProject);
+
+  return (
+    <nav className="flex items-center justify-between px-11 h-[100px] border-solid border-b-[1px] border-b-gray-400">
+      <div className="flex items-center gap-4">
+        {/* ahora esto es un Client Component */}
+        {pathname !== "/dashboard" && <BackButtonClient />}
+        <h1 className="text-2xl font-semibold text-gray-800">
+          Control de contratos
+          {pathname === "/dashboard/proyectos" && <span> | Proyectos</span>}
+          {pathname.startsWith("/dashboard/proyectos/") && (
+            <span> | {currentProject?.nombre}</span>
+          )}
+        </h1>
+      </div>
+
+      {/* Logout on the top-right (kept as your form) */}
+      <LogoutButton />
+    </nav>
+  );
+}
