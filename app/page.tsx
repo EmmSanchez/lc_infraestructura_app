@@ -20,6 +20,9 @@ export default function Home() {
         options: {
           redirectTo: redirectUrl,
           scopes: "email offline_access",
+          queryParams: {
+            prompt: "select_account",
+          },
         },
       });
       if (error) throw error;
