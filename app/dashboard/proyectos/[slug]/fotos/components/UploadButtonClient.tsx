@@ -1,5 +1,7 @@
 "use client";
 
+import { Upload } from "lucide-react";
+
 interface Props {
   projectId: string;
 }
@@ -13,9 +15,9 @@ export default function UploadButtonClient({ projectId }: Props) {
   return (
     <button
       onClick={handleUpload}
-      className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+      className="flex items-center justify-center gap-3 px-4 py-2 bg-blue-600 text-white rounded-[8px] hover:bg-blue-700"
     >
-      <span className="material-symbols-outlined text-xl">upload</span>
+      <Upload className="size-5" />
       <span>Subir foto</span>
     </button>
   );

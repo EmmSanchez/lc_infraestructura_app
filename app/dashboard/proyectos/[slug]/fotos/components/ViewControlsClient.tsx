@@ -1,5 +1,6 @@
 "use client";
 
+import { Grid2X2, TableProperties } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export default function ViewControlsClient() {
@@ -12,7 +13,9 @@ export default function ViewControlsClient() {
     const params = new URLSearchParams(searchParams.toString());
     if (view === "list") params.delete("view"); // list como default limpio
     else params.set("view", view);
-    router.push(`${pathname}${params.toString() ? `?${params.toString()}` : ""}`);
+    router.push(
+      `${pathname}${params.toString() ? `?${params.toString()}` : ""}`
+    );
   };
 
   const baseBtn = "p-2 rounded hover:bg-gray-100 border border-transparent";
@@ -26,7 +29,7 @@ export default function ViewControlsClient() {
         onClick={() => setView("grid")}
         title="Vista de cuadrícula"
       >
-        <span className="material-symbols-outlined text-xl">grid_view</span>
+        <Grid2X2 />
       </button>
       <button
         className={`${baseBtn} ${currentView === "list" ? activeBtn : ""}`}
@@ -34,7 +37,7 @@ export default function ViewControlsClient() {
         onClick={() => setView("list")}
         title="Vista de lista"
       >
-        <span className="material-symbols-outlined text-xl">view_list</span>
+        <TableProperties className="rotate-180" />
       </button>
     </div>
   );

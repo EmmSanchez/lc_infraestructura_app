@@ -28,7 +28,7 @@ export default function Proyectos() {
               >
                 <div className="flex items-center justify-between">
                   <h3 className="text-2xl font-bold">{ambiente.nombre}</h3>
-                  <div className="px-4 py-1.5 bg-[#D1FAE5] rounded-md">
+                  <div className="px-4 py-1.5 bg-[#D1FAE5] rounded-xl">
                     {ambiente.estatus}
                   </div>
                 </div>
@@ -45,7 +45,7 @@ export default function Proyectos() {
                 <Link
                   onClick={() => selectProject(ambiente)}
                   href={`/dashboard/proyectos/${ambiente.slug}/resumen`}
-                  className="w-full h-fit px-4 py-2 rounded-md bg-blue-500 text-white"
+                  className="w-full h-fit px-4 py-2 rounded-xl bg-blue-500 text-white"
                 >
                   Seleccionar Ambiente
                 </Link>

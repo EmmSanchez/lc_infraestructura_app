@@ -4,16 +4,16 @@ import StatCard from "@/components/StatCard";
 
 const actionCards = [
   {
-    id: "proyectos",
-    title: "Proyectos",
-    href: "/dashboard/proyectos",
-    icon: "person" as const,
-  },
-  {
     id: "participacion",
     title: "Proyectos en participacion",
     href: "/dashboard/proyectos/participacion",
     icon: "group" as const,
+  },
+  {
+    id: "proyectos",
+    title: "Proyectos",
+    href: "/dashboard/proyectos",
+    icon: "person" as const,
   },
 ];
 

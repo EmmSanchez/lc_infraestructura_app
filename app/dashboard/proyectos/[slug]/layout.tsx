@@ -53,13 +53,13 @@ export default function Sidebar({
 
   return (
     <div className="flex grow">
-      <div className="flex flex-col grow items-center gap-6 w-full max-w-[280px] px-5 py-10 border-r-1 border-r-gray-500">
+      <div className="flex flex-col grow items-center gap-6 w-full max-w-[280px] px-5 py-10 border-r-[1px] border-r-gray-500">
         {sidebarLinks.map((link, index) => {
           return (
             <Link
               key={index}
               href={`/dashboard/proyectos/${currentProject?.slug}/${link.href}`}
-              className={`w-full text-center py-3 rounded-md transition-colors ease-in-out ${
+              className={`w-full text-center py-3 rounded-[8px] transition-colors ease-in-out ${
                 pathname.endsWith(link.href)
                   ? "bg-[#2563EB] text-white"
                   : "hover:bg-[#2563EB] hover:text-white"

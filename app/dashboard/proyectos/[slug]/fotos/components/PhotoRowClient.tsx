@@ -1,5 +1,6 @@
 "use client";
 
+import { Download } from "lucide-react";
 import Image from "next/image";
 
 interface Photo {
@@ -57,15 +58,17 @@ export default function PhotoRowClient({ photo }: Props) {
         </div>
       </td>
       <td className="p-3 text-sm text-gray-900">{photo.name}</td>
-      <td className="p-3 text-sm text-gray-600">{formatDate(photo.modifiedAt)}</td>
+      <td className="p-3 text-sm text-gray-600">
+        {formatDate(photo.modifiedAt)}
+      </td>
       <td className="p-3 text-sm text-gray-600">{photo.size}</td>
-      <td className="p-3">
+      <td className="flex justify-center items-center p-3">
         <button
           onClick={handleDownload}
           className="p-2 rounded hover:bg-gray-100"
           aria-label="Descargar"
         >
-          <span className="material-symbols-outlined text-xl">download</span>
+          <Download />
         </button>
       </td>
     </tr>
