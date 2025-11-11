@@ -1,7 +1,11 @@
 import { Calendar, DollarSign, TrendingUp } from "lucide-react";
-import React from "react";
+import { Contrato } from "@/app/types/Contrato";
 
-export default function ContratoCard({ contrato }) {
+interface ContratoCardProps {
+  contrato: Contrato;
+}
+
+export default function ContratoCard({ contrato }: ContratoCardProps) {
   const nombre = contrato.Contrato.split(" - ")[1] || contrato.Contrato;
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {

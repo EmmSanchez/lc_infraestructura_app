@@ -1,0 +1,26 @@
+export type Contrato = {
+  Aditivas: string;
+  Amortizado: string;
+  AmortizadoNUM: number;
+  Anticipo: string;
+  AnticipoNUM: number;
+  AnticipoPct: string;
+  AnticipoPctNUM: number;
+  Avance: string;
+  Contrato: string;
+  Deductivas: string;
+  Estado: string;
+  Estimado: string;
+  Fecha: string;
+  FondoPct: string;
+  IVA: string;
+  IVAPct: string;
+  IVAPctNUM: number;
+  Importe: string;
+  Retenido: string;
+  RetenidoNUM: number;
+  Subtotal: string;
+  Total: string;
+  idContrato: number;
+  idProyecto: number;
+};
