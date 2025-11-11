@@ -1,13 +1,10 @@
 "use client";
 import { useState } from "react";
-import { useProjectStore } from "@/app/stores/useProjectStore";
 import ContratoCard from "@/components/ContratoCard";
 import ContratoModalClient from "@/components/ContratoModalClient";
 import contratos from "@/app/data/contratosDatos.json";
 
 export default function Proyectos() {
-  const setProject = useProjectStore((state) => state.setProject);
-
   const [modalOpen, setModalOpen] = useState(false);
   const [modalId, setModalId] = useState<number | string | null>(null);
 
