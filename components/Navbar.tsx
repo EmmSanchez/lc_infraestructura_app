@@ -7,6 +7,8 @@ import { LogoutButton } from "./logout-button";
 export default function Navbar() {
   const pathname = usePathname();
   const currentProject = useProjectStore((state) => state.currentProject);
+  const nombre =
+    currentProject?.Contrato.split(" - ")[1] || currentProject?.Contrato;
 
   return (
     <nav className="flex items-center justify-between px-11 h-[100px] border-solid border-b-[1px] border-b-gray-400">
@@ -17,7 +19,7 @@ export default function Navbar() {
           Control de contratos
           {pathname === "/dashboard/proyectos" && <span> | Proyectos</span>}
           {pathname.startsWith("/dashboard/proyectos/") && (
-            <span> | {currentProject?.nombre}</span>
+            <span> | {nombre}</span>
           )}
         </h1>
       </div>

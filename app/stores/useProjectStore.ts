@@ -1,9 +1,9 @@
 import { create } from "zustand";
-import { Project } from "../types/Project";
+import { Contrato } from "../types/Contrato";
 
 interface ProjectState {
-  currentProject: Project | null;
-  setProject: (project: Project | null) => void;
+  currentProject: Contrato | null;
+  setProject: (project: Contrato | null) => void;
 }
 
 export const useProjectStore = create<ProjectState>((set) => ({

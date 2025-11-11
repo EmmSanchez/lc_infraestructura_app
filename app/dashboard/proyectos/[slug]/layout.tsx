@@ -3,8 +3,9 @@ import { useProjectStore } from "@/app/stores/useProjectStore";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
-import { ambientes } from "@/app/data/projects";
+import contratos from "@/app/data/contratosDatos.json";
 import { Project } from "@/app/types/Project";
+import { Contrato } from "@/app/types/Contrato";
 
 const sidebarLinks = [
   {
@@ -34,22 +35,20 @@ export default function Sidebar({
   const { currentProject, setProject } = useProjectStore();
 
   const parts = pathname.split("/");
-  const slug = parts[3];
+  const slugID = parts[3];
 
   useEffect(() => {
-    if (!currentProject && slug) {
-      const result: Project | undefined = ambientes.find(
-        (ambiente) => ambiente.slug === slug
+    if (!currentProject && slugID) {
+      const result: Contrato | undefined = contratos.find(
+        (contrato) => contrato.idContrato.toString() === slugID
       );
       if (result) {
         setProject(result);
       } else {
-        console.warn(`No se encontró el proyecto con slug: ${slug}`);
+        console.warn(`No se encontró el proyecto con slug: ${slugID}`);
       }
     }
-  }, [slug, currentProject, setProject]);
-
-  useEffect(() => {}, [slug, currentProject]);
+  }, [slugID, currentProject, setProject]);
 
   return (
     <div className="flex grow">
@@ -58,7 +57,7 @@ export default function Sidebar({
           return (
             <Link
               key={index}
-              href={`/dashboard/proyectos/${currentProject?.slug}/${link.href}`}
+              href={`/dashboard/proyectos/${currentProject?.idContrato}/${link.href}`}
               className={`w-full text-center py-3 rounded-[8px] transition-colors ease-in-out ${
                 pathname.endsWith(link.href)
                   ? "bg-[#2563EB] text-white"

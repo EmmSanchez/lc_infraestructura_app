@@ -8,11 +8,6 @@ import ContratoCard from "@/components/ContratoCard";
 import contratos from "@/app/data/contratosDatos.json";
 
 export default function Proyectos() {
-  const setProject = useProjectStore((state) => state.setProject);
-  const selectProject = (ambiente: Project) => {
-    setProject(ambiente);
-  };
-
   return (
     <main className="flex flex-col grow bg-gray-50 p-6 md:p-11">
       <section className="flex flex-col gap-6 w-full max-w-7xl mx-auto">
