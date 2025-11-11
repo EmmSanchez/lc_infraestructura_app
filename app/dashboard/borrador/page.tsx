@@ -1,18 +1,15 @@
 "use client";
-import { useProjectStore } from "@/app/stores/useProjectStore";
-import { Project } from "@/app/types/Project";
-import Image from "next/image";
-import Link from "next/link";
-import { ambientes } from "@/app/data/projects";
-import ContratoCard from "@/components/ContratoCard";
 import contratos from "@/app/data/contratosDatos.json";
+import { useProjectStore } from "@/app/stores/useProjectStore";
+import ContratoCard from "@/components/ContratoCard";
+import { Calendar, DollarSign, TrendingUp } from "lucide-react";
+import Link from "next/link";
 
-export default function Proyectos() {
+export default function Borrador() {
   const setProject = useProjectStore((state) => state.setProject);
-  const selectProject = (ambiente: Project) => {
-    setProject(ambiente);
-  };
-
+  // const selectProject = (ambiente) => {
+  //   setProject(ambiente);
+  // };
   return (
     <main className="flex flex-col grow bg-gray-50 p-6 md:p-11">
       <section className="flex flex-col gap-6 w-full max-w-7xl mx-auto">
