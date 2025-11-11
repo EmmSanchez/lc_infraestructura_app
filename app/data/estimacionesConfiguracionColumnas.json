@@ -1,0 +1,221 @@
+[
+  {
+    "NombreColumna": "Estimacion",
+    "TipoColumna": "String",
+    "WidthDefault": "130",
+    "WidthMinima": "130",
+    "PropiedadesColumna": {
+      "EsEditable": false,
+      "EstaOculta": false
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "20"
+    }
+  },
+  {
+    "NombreColumna": "NombreSecundario",
+    "NombreMostrar": "Nombre Secundario",
+    "TipoColumna": "String",
+    "WidthDefault": "130",
+    "WidthMinima": "130",
+    "PropiedadesColumna": {
+      "EsEditable": false,
+      "EstaOculta": false
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "20"
+    }
+  },
+  {
+    "NombreColumna": "fecha",
+    "TipoColumna": "fecha",
+    "WidthMinima": "110",
+    "WidthMaxima": "110",
+    "PropiedadesColumna": {
+      "Formato": "FechaCorta",
+      "EsEditable": false,
+      "EstaOculta": false
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "10"
+    }
+  },
+  {
+    "NombreColumna": "importe",
+    "TipoColumna": "number",
+    "WidthDefault": "150",
+    "WidthMinima": "120",
+    "PropiedadesColumna": {
+      "Formato": "Dinero",
+      "EsEditable": false,
+      "DecimalesdeRedondeo": 2,
+      "EstaOculta": false
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "10"
+    }
+  },
+  {
+    "NombreColumna": "anticipo",
+    "TipoColumna": "number",
+    "WidthDefault": "150",
+    "WidthMinima": "120",
+    "PropiedadesColumna": {
+      "Formato": "Dinero",
+      "EsEditable": false,
+      "DecimalesdeRedondeo": 2,
+      "EstaOculta": false
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "10"
+    }
+  },
+  {
+    "NombreColumna": "amortizacion",
+    "TipoColumna": "number",
+    "WidthDefault": "150",
+    "WidthMinima": "120",
+    "PropiedadesColumna": {
+      "Formato": "Dinero",
+      "EsEditable": false,
+      "DecimalesdeRedondeo": 2,
+      "EstaOculta": false
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "10"
+    }
+  },
+  {
+    "NombreColumna": "fondoGarantia",
+    "TipoColumna": "number",
+    "WidthDefault": "150",
+    "WidthMinima": "120",
+    "PropiedadesColumna": {
+      "Formato": "Dinero",
+      "EsEditable": false,
+      "DecimalesdeRedondeo": 2,
+      "EstaOculta": false
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "10"
+    }
+  },
+  {
+    "NombreColumna": "aditivas",
+    "TipoColumna": "number",
+    "WidthDefault": "150",
+    "WidthMinima": "120",
+    "PropiedadesColumna": {
+      "Formato": "Dinero",
+      "EsEditable": false,
+      "DecimalesdeRedondeo": 2,
+      "EstaOculta": false
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "10"
+    }
+  },
+  {
+    "NombreColumna": "deductivas",
+    "TipoColumna": "number",
+    "WidthDefault": "150",
+    "WidthMinima": "120",
+    "PropiedadesColumna": {
+      "Formato": "Dinero",
+      "EsEditable": false,
+      "DecimalesdeRedondeo": 2,
+      "EstaOculta": false
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "10"
+    }
+  },
+  {
+    "NombreColumna": "subtotal",
+    "TipoColumna": "number",
+    "WidthDefault": "150",
+    "WidthMinima": "120",
+    "PropiedadesColumna": {
+      "Formato": "Dinero",
+      "EsEditable": false,
+      "DecimalesdeRedondeo": 2,
+      "EstaOculta": false
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "10"
+    }
+  },
+  {
+    "NombreColumna": "iva",
+    "TipoColumna": "number",
+    "WidthDefault": "150",
+    "WidthMinima": "120",
+    "PropiedadesColumna": {
+      "Formato": "Dinero",
+      "EsEditable": false,
+      "DecimalesdeRedondeo": 2,
+      "EstaOculta": false
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "10"
+    }
+  },
+  {
+    "NombreColumna": "total",
+    "TipoColumna": "number",
+    "WidthDefault": "150",
+    "WidthMinima": "120",
+    "PropiedadesColumna": {
+      "Formato": "Dinero",
+      "EsEditable": false,
+      "DecimalesdeRedondeo": 2,
+      "EstaOculta": false
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "10"
+    }
+  },
+  {
+    "NombreColumna": "Comentario",
+    "TipoColumna": "String",
+    "WidthDefault": "130",
+    "WidthMinima": "130",
+    "PropiedadesColumna": {
+      "EsEditable": false,
+      "EstaOculta": true
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "20"
+    }
+  },
+  {
+    "NombreColumna": "editarRegistro",
+    "TipoColumna": "Icono",
+    "WidthDefault": "250",
+    "WidthMinima": "100",
+    "WidthMaxima": "250",
+    "Print": {
+      "Printable": false
+    },
+    "PropiedadesColumna": {
+      "Icono": "deleteAlt",
+      "tieneTitulo": true,
+      "Action": "editarRegistro",
+      "ColorDelBoton": "#2563EB",
+      "EstaOculta": false
+    }
+  }
+]

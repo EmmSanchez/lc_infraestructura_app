@@ -1,0 +1,315 @@
+[
+  {
+    "NombreColumna": "verDetalle",
+    "TipoColumna": "Icono",
+    "WidthDefault": "160",
+    "WidthMinima": "120",
+    "WidthMaxima": "200",
+    "Print": {
+      "Printable": false
+    },
+    "PropiedadesColumna": {
+      "Icono": "settings",
+      "tieneTitulo": true,
+      "titulo": "Concatenate('Ver detalle de ', ContratoEstimacion)",
+      "Action": "verDetalle",
+      "Disable": false,
+      "ColorDelBoton": "#2986cc",
+      "EstaOculta": false
+    }
+  },
+  {
+    "NombreColumna": "IDPolizaCargos",
+    "TipoColumna": "number",
+    "WidthDefault": "110",
+    "WidthMinima": "90",
+    "PropiedadesColumna": {
+      "EsEditable": false,
+      "Formato": "numero",
+      "EstaOculta": true
+    },
+    "ValidacionesColumna": {
+      "ValorMinimo": 1,
+      "SoloEnteros": true,
+      "NoNegativos": true
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "8"
+    }
+  },
+  {
+    "NombreColumna": "IDContrato",
+    "TipoColumna": "number",
+    "WidthDefault": "100",
+    "WidthMinima": "90",
+    "PropiedadesColumna": {
+      "EsEditable": false,
+      "Formato": "numero",
+      "EstaOculta": true
+    },
+    "ValidacionesColumna": {
+      "ValorMinimo": 1,
+      "SoloEnteros": true,
+      "NoNegativos": true
+    },
+    "Print": {
+      "Printable": false
+    }
+  },
+  {
+    "NombreColumna": "IDEstimacion",
+    "TipoColumna": "number",
+    "WidthDefault": "110",
+    "WidthMinima": "90",
+    "PropiedadesColumna": {
+      "EsEditable": false,
+      "Formato": "numero",
+      "EstaOculta": true
+    },
+    "ValidacionesColumna": {
+      "ValorMinimo": 1,
+      "SoloEnteros": true,
+      "NoNegativos": true
+    },
+    "Print": {
+      "Printable": false
+    }
+  },
+  {
+    "NombreColumna": "Cargo",
+    "TipoColumna": "String",
+    "WidthDefault": "180",
+    "WidthMinima": "140",
+    "PropiedadesColumna": {
+      "EsEditable": false,
+      "EstaOculta": true
+    },
+    "ValidacionesColumna": {
+      "PudeEstarVacio": false,
+      "CaracteresMinimo": 3,
+      "CaracteresMaximo": 120
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "10"
+    }
+  },
+  {
+    "NombreColumna": "Estimacion",
+    "TipoColumna": "String",
+    "WidthDefault": "180",
+    "WidthMinima": "140",
+    "PropiedadesColumna": {
+      "EsEditable": false,
+      "EstaOculta": true
+    },
+    "ValidacionesColumna": {
+      "PudeEstarVacio": false,
+      "CaracteresMinimo": 3,
+      "CaracteresMaximo": 120
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "10"
+    }
+  },
+  {
+    "NombreColumna": "Contrato",
+    "TipoColumna": "String",
+    "WidthDefault": "280",
+    "WidthMinima": "200",
+    "PropiedadesColumna": {
+      "EsEditable": false,
+      "EstaOculta": false
+    },
+    "ValidacionesColumna": {
+      "PudeEstarVacio": false,
+      "CaracteresMinimo": 3,
+      "CaracteresMaximo": 240
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "16"
+    }
+  },
+  {
+    "NombreColumna": "ContratoEstimacion",
+    "TipoColumna": "String",
+    "WidthDefault": "320",
+    "WidthMinima": "220",
+    "PropiedadesColumna": {
+      "EsEditable": false,
+      "EstaOculta": true
+    },
+    "ValidacionesColumna": {
+      "PudeEstarVacio": false,
+      "CaracteresMinimo": 3,
+      "CaracteresMaximo": 300
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "18"
+    }
+  },
+  {
+    "NombreColumna": "Subtotal",
+    "TipoColumna": "number",
+    "WidthDefault": "140",
+    "WidthMinima": "120",
+    "PropiedadesColumna": {
+      "EsEditable": false,
+      "Formato": "Dinero",
+      "DecimalesdeRedondeo": 2,
+      "EstaOculta": false
+    },
+    "ValidacionesColumna": {
+      "ValorMinimo": 0,
+      "NoNegativos": true
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "9"
+    }
+  },
+  {
+    "NombreColumna": "IVA",
+    "TipoColumna": "number",
+    "WidthDefault": "140",
+    "WidthMinima": "120",
+    "PropiedadesColumna": {
+      "EsEditable": false,
+      "Formato": "Dinero",
+      "DecimalesdeRedondeo": 2,
+      "EstaOculta": false
+    },
+    "ValidacionesColumna": {
+      "ValorMinimo": 0,
+      "NoNegativos": true
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "9"
+    }
+  },
+  {
+    "NombreColumna": "Total",
+    "TipoColumna": "number",
+    "WidthDefault": "150",
+    "WidthMinima": "120",
+    "PropiedadesColumna": {
+      "EsEditable": false,
+      "Formato": "Dinero",
+      "DecimalesdeRedondeo": 2,
+      "EstaOculta": false
+    },
+    "ValidacionesColumna": {
+      "ValorMinimo": 0,
+      "NoNegativos": true
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "10"
+    }
+  },
+  {
+    "NombreColumna": "Importe",
+    "TipoColumna": "number",
+    "WidthDefault": "150",
+    "WidthMinima": "120",
+    "PropiedadesColumna": {
+      "EsEditable": false,
+      "Formato": "Dinero",
+      "DecimalesdeRedondeo": 2,
+      "EstaOculta": false
+    },
+    "ValidacionesColumna": {
+      "ValorMinimo": 0,
+      "NoNegativos": true
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "10"
+    }
+  },
+  {
+    "NombreColumna": "Amortizacion",
+    "TipoColumna": "number",
+    "WidthDefault": "150",
+    "WidthMinima": "120",
+    "PropiedadesColumna": {
+      "EsEditable": false,
+      "Formato": "Dinero",
+      "DecimalesdeRedondeo": 2,
+      "EstaOculta": true
+    },
+    "ValidacionesColumna": {
+      "ValorMinimo": 0,
+      "NoNegativos": true
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "10"
+    }
+  },
+  {
+    "NombreColumna": "Fondo",
+    "TipoColumna": "number",
+    "WidthDefault": "150",
+    "WidthMinima": "120",
+    "PropiedadesColumna": {
+      "EsEditable": false,
+      "Formato": "Dinero",
+      "DecimalesdeRedondeo": 2,
+      "EstaOculta": true
+    },
+    "ValidacionesColumna": {
+      "ValorMinimo": 0,
+      "NoNegativos": true
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "10"
+    }
+  },
+  {
+    "NombreColumna": "Aditivas",
+    "TipoColumna": "number",
+    "WidthDefault": "140",
+    "WidthMinima": "120",
+    "PropiedadesColumna": {
+      "EsEditable": false,
+      "Formato": "Dinero",
+      "DecimalesdeRedondeo": 2,
+      "EstaOculta": false
+    },
+    "ValidacionesColumna": {
+      "ValorMinimo": 0,
+      "NoNegativos": true
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "9"
+    }
+  },
+  {
+    "NombreColumna": "Deductivas",
+    "TipoColumna": "number",
+    "WidthDefault": "140",
+    "WidthMinima": "120",
+    "PropiedadesColumna": {
+      "EsEditable": false,
+      "Formato": "Dinero",
+      "DecimalesdeRedondeo": 2,
+      "EstaOculta": false
+    },
+    "ValidacionesColumna": {
+      "ValorMinimo": 0,
+      "NoNegativos": true
+    },
+    "Print": {
+      "Printable": true,
+      "WidthPercentage": "9"
+    }
+  }
+]
