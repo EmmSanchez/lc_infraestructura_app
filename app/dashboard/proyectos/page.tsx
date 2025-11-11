@@ -2,9 +2,12 @@
 import { useState } from "react";
 import ContratoCard from "@/components/ContratoCard";
 import ContratoModalClient from "@/components/ContratoModalClient";
-import contratos from "@/app/data/contratosDatos.json";
+import { useProjectStore } from "@/app/stores/useProjectStore";
 
 export default function Proyectos() {
+  const listOfAssignedProjects = useProjectStore(
+    (state) => state.listOfAssignedProjects
+  );
   const [modalOpen, setModalOpen] = useState(false);
   const [modalId, setModalId] = useState<number | string | null>(null);
 
@@ -42,13 +45,14 @@ export default function Proyectos() {
         <div className="border-t border-zinc-200 w-full" />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 w-full max-w-7xl gap-6">
-          {contratos.map((contrato, id) => {
-            return (
-              <div key={id}>
-                <ContratoCard contrato={contrato} onOpen={openModal} />
-              </div>
-            );
-          })}
+          {listOfAssignedProjects &&
+            listOfAssignedProjects.map((contrato, id) => {
+              return (
+                <div key={id}>
+                  <ContratoCard contrato={contrato} onOpen={openModal} />
+                </div>
+              );
+            })}
         </div>
       </section>
 

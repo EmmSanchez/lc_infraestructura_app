@@ -40,6 +40,27 @@ export default function AdminProjects({ contractID }: AdminProjectsProps) {
       return;
     }
 
+    // Comprobar si ya existe la asignación para evitar duplicados
+    try {
+      const { data: existing, error: existError } = await supabase
+        .from("user_project_assignments")
+        .select("id")
+        .eq("contract_id", contractID)
+        .eq("user_email", selectedEmail)
+        .limit(1);
+
+      if (existError) {
+        console.error("Error comprobando asignaciones existentes:", existError);
+      }
+
+      if (existing && Array.isArray(existing) && existing.length > 0) {
+        alert("Este usuario ya está asignado a este proyecto");
+        return;
+      }
+    } catch (err) {
+      console.error("Error inesperado comprobando duplicados:", err);
+    }
+
     // Insertar relación en la tabla user_projects
     const { error } = await supabase.from("user_project_assignments").insert([
       {
@@ -55,6 +76,8 @@ export default function AdminProjects({ contractID }: AdminProjectsProps) {
       alert(`Usuario ${selectedEmail} asignado correctamente 🎉`);
       setOpen(false);
       setSelectedEmail("");
+      // emitir evento para que la lista en ProjectsList se refresque
+      window.dispatchEvent(new CustomEvent("assignmentsChanged"));
     }
   };
 
@@ -75,13 +98,58 @@ export default function AdminProjects({ contractID }: AdminProjectsProps) {
   return (
     <div>
       {/* Botón para abrir modal */}
-      <div className="relative inline-block text-left">
+      <div className="relative inline-flex text-left items-center gap-2">
         <button
           onClick={() => setOpen(true)}
           className="flex items-center gap-1 bg-blue-600 text-white px-3 py-1 rounded-[8px] hover:bg-blue-700 transition"
         >
           <span>Agregar</span>
           <Plus className="size-4" />
+        </button>
+
+        {/* Botón rojo para eliminar asignaciones del proyecto */}
+        <button
+          onClick={async () => {
+            const ok = confirm(
+              "¿Eliminar todas las asignaciones de usuarios para este proyecto?"
+            );
+            if (!ok) return;
+            try {
+              const { error } = await supabase
+                .from("user_project_assignments")
+                .delete()
+                .eq("contract_id", contractID);
+
+              if (error) {
+                console.error("Error al eliminar asignaciones:", error);
+                alert("Error al eliminar asignaciones");
+              } else {
+                alert("Asignaciones eliminadas correctamente");
+                // emitir evento para que la lista se refresque
+                window.dispatchEvent(new CustomEvent("assignmentsChanged"));
+              }
+            } catch (e) {
+              console.error(e);
+              alert("Error inesperado al eliminar asignaciones");
+            }
+          }}
+          title="Eliminar asignaciones"
+          className="flex items-center justify-center w-9 h-9 rounded-[8px] bg-red-600 text-white hover:bg-red-700"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"
+            />
+          </svg>
         </button>
       </div>
 

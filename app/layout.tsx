@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import AuthWatcher from "./auth/auth-watcher/AuthWatcher";
+import { ProjectsWatcher } from "@/components/watcher/ProjectWatcher";
 
 const defaultUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
@@ -32,6 +33,7 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         <AuthWatcher />
+        <ProjectsWatcher />
         {children}
       </body>
     </html>
