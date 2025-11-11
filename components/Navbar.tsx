@@ -3,10 +3,16 @@ import { usePathname } from "next/navigation";
 import BackButtonClient from "./BackButtonClient";
 import { useProjectStore } from "@/app/stores/useProjectStore";
 import { LogoutButton } from "./logout-button";
+import { useUserStore } from "@/app/stores/useUserStore";
 
 export default function Navbar() {
   const pathname = usePathname();
   const currentProject = useProjectStore((state) => state.currentProject);
+  const nombre =
+    currentProject?.Contrato.split(" - ")[1] || currentProject?.Contrato;
+
+  const user = useUserStore((state) => state.user);
+  const userName = user?.user_metadata.email || user?.email;
 
   return (
     <nav className="flex items-center justify-between px-11 h-[100px] border-solid border-b-[1px] border-b-gray-400">
@@ -17,13 +23,16 @@ export default function Navbar() {
           Control de contratos
           {pathname === "/dashboard/proyectos" && <span> | Proyectos</span>}
           {pathname.startsWith("/dashboard/proyectos/") && (
-            <span> | {currentProject?.nombre}</span>
+            <span> | {nombre}</span>
           )}
         </h1>
       </div>
 
-      {/* Logout on the top-right (kept as your form) */}
-      <LogoutButton />
+      <div className="flex justify-center items-center gap-4">
+        <p className="font-semibold text-zinc-600">{userName}</p>
+        {/* Logout on the top-right (kept as your form) */}
+        <LogoutButton />
+      </div>
     </nav>
   );
 }

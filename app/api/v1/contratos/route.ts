@@ -14,7 +14,9 @@ function getConfig(): EnvConfig {
   const server = process.env.AZURE_SQL_SERVER;
   const database = process.env.AZURE_SQL_DATABASE;
   if (!user || !password || !server || !database) {
-    throw new Error("Missing Azure SQL environment variables. Set AZURE_SQL_USER, AZURE_SQL_PASSWORD, AZURE_SQL_SERVER and AZURE_SQL_DATABASE");
+    throw new Error(
+      "Missing Azure SQL environment variables. Set AZURE_SQL_USER, AZURE_SQL_PASSWORD, AZURE_SQL_SERVER and AZURE_SQL_DATABASE"
+    );
   }
   return { user, password, server, database };
 }
@@ -26,7 +28,10 @@ export async function POST(req: Request) {
     console.log("/api/v1/contratos POST body:", body);
     const idContrato = body?.idContrato;
     if (!idContrato) {
-      return new NextResponse(JSON.stringify({ error: "idContrato required" }), { status: 400 });
+      return new NextResponse(
+        JSON.stringify({ error: "idContrato required" }),
+        { status: 400 }
+      );
     }
 
     const cfg = getConfig();
@@ -52,7 +57,9 @@ export async function POST(req: Request) {
     await pool.close();
 
     if (!result.recordset || result.recordset.length === 0) {
-      return new NextResponse(JSON.stringify({ error: "Not found" }), { status: 404 });
+      return new NextResponse(JSON.stringify({ error: "Not found" }), {
+        status: 404,
+      });
     }
 
     // return first row
@@ -60,6 +67,9 @@ export async function POST(req: Request) {
   } catch (err: any) {
     // log error server-side to see stack in terminal where `pnpm dev` runs
     console.error("/api/v1/contratos error:", err);
-    return new NextResponse(JSON.stringify({ error: err?.message || String(err) }), { status: 500 });
+    return new NextResponse(
+      JSON.stringify({ error: err?.message || String(err) }),
+      { status: 500 }
+    );
   }
 }

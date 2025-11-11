@@ -1,9 +1,12 @@
 "use client";
-import contratos from "@/app/data/contratosDatos.json";
+import rawContratos from "@/app/data/contratosDatos.json";
 import { useProjectStore } from "@/app/stores/useProjectStore";
+import { Contrato } from "@/app/types/Contrato";
 import ContratoCard from "@/components/ContratoCard";
 import { Calendar, DollarSign, TrendingUp } from "lucide-react";
 import Link from "next/link";
+
+const contratos: Contrato[] = rawContratos;
 
 export default function Borrador() {
   const setProject = useProjectStore((state) => state.setProject);

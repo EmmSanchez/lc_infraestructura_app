@@ -43,7 +43,12 @@ export default function ContratoModalClient({ open, onClose, initialId }: any) {
       <div className="w-full max-w-3xl bg-white rounded-lg shadow-lg p-6">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold">Consulta de contrato</h3>
-          <button onClick={onClose} className="text-zinc-500 hover:text-zinc-800">Cerrar</button>
+          <button
+            onClick={onClose}
+            className="text-zinc-500 hover:text-zinc-800"
+          >
+            Cerrar
+          </button>
         </div>
 
         <div className="grid grid-cols-2 gap-4 mb-4">
@@ -82,15 +87,21 @@ export default function ContratoModalClient({ open, onClose, initialId }: any) {
             </div>
             <div>
               <div className="text-xs text-zinc-500">Cliente</div>
-              <div className="font-semibold">{result.contratoNombreCliente ?? "-"}</div>
+              <div className="font-semibold">
+                {result.contratoNombreCliente ?? "-"}
+              </div>
             </div>
             <div>
               <div className="text-xs text-zinc-500">Fecha Contrato</div>
-              <div className="font-semibold">{result.fechaContratoCliente ?? "-"}</div>
+              <div className="font-semibold">
+                {result.fechaContratoCliente ?? "-"}
+              </div>
             </div>
           </div>
         ) : (
-          <div className="text-zinc-500">No hay resultados. Introduce un ID y pulsa Buscar.</div>
+          <div className="text-zinc-500">
+            No hay resultados. Introduce un ID y pulsa Buscar.
+          </div>
         )}
       </div>
     </div>

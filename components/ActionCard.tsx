@@ -1,3 +1,4 @@
+import { Shield } from "lucide-react";
 import Link from "next/link";
 
 export default function ActionCard({
@@ -24,14 +25,7 @@ export default function ActionCard({
       <div className="flex items-center gap-6">
         <div className="flex-shrink-0">
           {icon === "group" ? (
-            <svg
-              className="h-12 w-12 text-gray-800"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden
-            >
-              <path d="M16 11c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM8 11c1.657 0 3-1.343 3-3S9.657 5 8 5 5 6.343 5 8s1.343 3 3 3zM8 13c-2.33 0-7 1.17-7 3.5V19h14v-2.5C15 14.17 10.33 13 8 13zM16 13c-.29 0-.62.02-.98.05C15.43 13.7 17 14.78 17 16v2h6v-2.5C23 14.17 18.33 13 16 13z" />
-            </svg>
+            <Shield className="h-12 w-12 text-gray-800" />
           ) : (
             <svg
               className="h-12 w-12 text-gray-800"

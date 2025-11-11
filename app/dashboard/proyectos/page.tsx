@@ -1,17 +1,10 @@
 "use client";
-import React, { useState } from "react";
-import { useProjectStore } from "@/app/stores/useProjectStore";
-import { Project } from "@/app/types/Project";
+import { useState } from "react";
 import ContratoCard from "@/components/ContratoCard";
 import ContratoModalClient from "@/components/ContratoModalClient";
 import contratos from "@/app/data/contratosDatos.json";
 
 export default function Proyectos() {
-  const setProject = useProjectStore((state) => state.setProject);
-  const selectProject = (ambiente: Project) => {
-    setProject(ambiente);
-  };
-
   const [modalOpen, setModalOpen] = useState(false);
   const [modalId, setModalId] = useState<number | string | null>(null);
 
@@ -30,12 +23,17 @@ export default function Proyectos() {
         <div className="flex items-center justify-between">
           <div>
             <h2 className="font-semibold text-4xl mb-3">Ambientes</h2>
-            <p className="text-xl mb-3">Seleccione un ambiente para consultar su información</p>
+            <p className="text-xl mb-3">
+              Seleccione un ambiente para consultar su información
+            </p>
           </div>
 
           {/* Botón azul en la cabecera, a la derecha de 'Ambientes' */}
           <div className="ml-4 flex items-center">
-            <button onClick={() => openModal()} className="px-6 py-3 rounded-full bg-[#3B82F6] text-white font-medium text-lg shadow hover:bg-[#3B82F6]/90">
+            <button
+              onClick={() => openModal()}
+              className="px-6 py-3 rounded-full bg-[#3B82F6] text-white font-medium text-lg shadow hover:bg-[#3B82F6]/90"
+            >
               Consultar ambiente
             </button>
           </div>
@@ -54,7 +52,11 @@ export default function Proyectos() {
         </div>
       </section>
 
-      <ContratoModalClient open={modalOpen} onClose={closeModal} initialId={modalId} />
+      <ContratoModalClient
+        open={modalOpen}
+        onClose={closeModal}
+        initialId={modalId}
+      />
     </main>
   );
 }

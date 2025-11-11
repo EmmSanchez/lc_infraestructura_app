@@ -1,7 +1,18 @@
 import { Calendar, DollarSign, TrendingUp } from "lucide-react";
-import React from "react";
+import { Contrato } from "@/app/types/Contrato";
+import Link from "next/link";
+import { useProjectStore } from "@/app/stores/useProjectStore";
+
+interface ContratoCardProps {
+  contrato: Contrato;
+}
 
 export default function ContratoCard({ contrato, onOpen }: any) {
+  const setProject = useProjectStore((state) => state.setProject);
+  const selectProject = (contrato: Contrato) => {
+    setProject(contrato);
+  };
+
   const nombre = contrato.Contrato.split(" - ")[1] || contrato.Contrato;
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
@@ -45,7 +56,9 @@ export default function ContratoCard({ contrato, onOpen }: any) {
               <TrendingUp className="size-6" />
               Avance
             </span>
-            <span className="text-base font-bold text-primary">{contrato.Avance}</span>
+            <span className="text-base font-bold text-primary">
+              {contrato.Avance}
+            </span>
           </div>
           {/* Progreso */}
           <div className="relative h-3">
@@ -64,12 +77,16 @@ export default function ContratoCard({ contrato, onOpen }: any) {
               <DollarSign className="size-4" />
               Total
             </p>
-            <p className="font-bold text-base text-zinc-800">{contrato.Total}</p>
+            <p className="font-bold text-base text-zinc-800">
+              {contrato.Total}
+            </p>
           </div>
 
           <div className="bg-zinc-100/70 rounded-[10px] p-2.5 border-solid border-[1px] border-zinc-200/50">
             <p className="text-base font-light mb-2">Presupuesto</p>
-            <p className="font-bold text-base text-zinc-800">{contrato.Importe}</p>
+            <p className="font-bold text-base text-zinc-800">
+              {contrato.Importe}
+            </p>
           </div>
 
           <div className="bg-zinc-100/70 rounded-[10px] p-2.5 border-solid border-[1px] border-zinc-200/50">
@@ -82,17 +99,20 @@ export default function ContratoCard({ contrato, onOpen }: any) {
               <Calendar className="size-4" />
               Fecha
             </p>
-            <p className="font-bold text-base text-zinc-800">{contrato.Fecha}</p>
+            <p className="font-bold text-base text-zinc-800">
+              {contrato.Fecha}
+            </p>
           </div>
         </div>
       </div>
       {/* Footer con CTA */}
-      <button
-        onClick={() => onOpen?.(contrato.idContrato)}
+      <Link
+        onClick={() => selectProject(contrato)}
+        href={`/dashboard/proyectos/${contrato.idContrato}/resumen`}
         className="w-full px-3 py-2 rounded-[8px] bg-[#3B82F6] text-white font-medium text-lg hover:bg-[#3B82F6]/90 transition-colors"
       >
         Ver detalles
-      </button>
+      </Link>
     </div>
   );
 }
