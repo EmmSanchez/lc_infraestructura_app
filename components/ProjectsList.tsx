@@ -95,6 +95,15 @@ export function ProjectsList() {
     };
 
     fetchAssignments();
+    // listener para actualizaciones (cuando se asigna/remueve desde modal)
+    const onChanged = () => {
+      fetchAssignments();
+    };
+    window.addEventListener("assignmentsChanged", onChanged as EventListener);
+
+    return () => {
+      window.removeEventListener("assignmentsChanged", onChanged as EventListener);
+    };
   }, [supabase]);
 
   // Agrupar usuarios por contract_id
