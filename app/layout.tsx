@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
+import AuthWatcher from "./auth/auth-watcher/AuthWatcher";
 
 const defaultUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
@@ -30,6 +31,7 @@ export default function RootLayout({
         className={`${geistSans.className} antialiased bg-white`}
         suppressHydrationWarning={true}
       >
+        <AuthWatcher />
         {children}
       </body>
     </html>

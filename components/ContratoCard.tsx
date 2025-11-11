@@ -1,18 +1,7 @@
 import { Calendar, DollarSign, TrendingUp } from "lucide-react";
-import { Contrato } from "@/app/types/Contrato";
-import Link from "next/link";
-import { useProjectStore } from "@/app/stores/useProjectStore";
+import React from "react";
 
-interface ContratoCardProps {
-  contrato: Contrato;
-}
-
-export default function ContratoCard({ contrato }: ContratoCardProps) {
-  const setProject = useProjectStore((state) => state.setProject);
-  const selectProject = (contrato: Contrato) => {
-    setProject(contrato);
-  };
-
+export default function ContratoCard({ contrato, onOpen }: any) {
   const nombre = contrato.Contrato.split(" - ")[1] || contrato.Contrato;
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
@@ -106,13 +95,12 @@ export default function ContratoCard({ contrato }: ContratoCardProps) {
         </div>
       </div>
       {/* Footer con CTA */}
-      <Link
-        onClick={() => selectProject(contrato)}
-        href={`/dashboard/proyectos/${contrato.idContrato}/resumen`}
+      <button
+        onClick={() => onOpen?.(contrato.idContrato)}
         className="w-full px-3 py-2 rounded-[8px] bg-[#3B82F6] text-white font-medium text-lg hover:bg-[#3B82F6]/90 transition-colors"
       >
         Ver detalles
-      </Link>
+      </button>
     </div>
   );
 }
