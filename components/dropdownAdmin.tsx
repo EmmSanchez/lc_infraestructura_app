@@ -83,13 +83,53 @@ export default function AdminProjects({ contractID }: AdminProjectsProps) {
 
   useEffect(() => {
     const getProfiles = async () => {
-      const { data, error } = await supabase
-        .from("profiles")
-        .select("id, email, role")
-        .neq("role", "admin"); // <-- AÑADE ESTA LÍNEA
+      try {
+        const { data: profiles, error: profilesError } = await supabase
+          .from("profiles")
+          .select("id, email, role")
+          .neq("role", "admin");
 
-      if (error) console.error("Error al obtener usuarios:", error);
-      else setUsers(data);
+        if (profilesError) {
+          console.error("Error al obtener usuarios:", profilesError);
+          setUsers([]);
+          return;
+        }
+
+        // obtener las asignaciones actuales para este contrato y excluir los ya asignados
+        const { data: assigned, error: assignedError } = await supabase
+          .from("user_project_assignments")
+          .select("user_email")
+          .eq("contract_id", contractID);
+
+        if (assignedError) {
+          console.error("Error al obtener asignaciones para filtro:", assignedError);
+        }
+
+        const assignedEmails = new Set((assigned || []).map((a: any) => a.user_email));
+
+        // dominios/ emails permitidos configurables (NEXT_PUBLIC_ALLOWED_EMAIL_DOMAINS, NEXT_PUBLIC_ALLOWED_EMAILS)
+        const allowedDomainsEnv = (process.env.NEXT_PUBLIC_ALLOWED_EMAIL_DOMAINS || "outlook.com,hotmail.com,microsoft.com").split(",").map(s => s.trim().toLowerCase()).filter(Boolean);
+        const allowedEmailsEnv = (process.env.NEXT_PUBLIC_ALLOWED_EMAILS || "").split(",").map(s => s.trim().toLowerCase()).filter(Boolean);
+
+        // filtrar perfiles: permitir solo correos en dominios permitidos o listados explícitamente,
+        // además ocultar admin@lc.com y usuarios ya asignados
+        const filtered = (profiles || []).filter((p: any) => {
+          if (!p || !p.email) return false;
+          const email = p.email.toString().toLowerCase();
+          if (email === "admin@lc.com") return false; // ocultar super-admin siempre
+          if (assignedEmails.has(p.email)) return false; // ocultar ya asignados
+
+          const domain = email.split("@").pop() || "";
+          const allowedByDomain = allowedDomainsEnv.includes(domain);
+          const allowedByEmail = allowedEmailsEnv.includes(email);
+          return allowedByDomain || allowedByEmail;
+        });
+
+        setUsers(filtered as User[]);
+      } catch (err) {
+        console.error("Error al cargar perfiles para asignación:", err);
+        setUsers([]);
+      }
     };
 
     getProfiles();
