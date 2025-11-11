@@ -1,0 +1,28 @@
+export type Estimacion = {
+  idEstimacion: number;
+  idContrato: number;
+  renglon: number;
+  nombre: string;
+  fecha: string;
+  UUID: string | null;
+  link: string | null;
+  folio: string | null;
+  idFacturaNeodata: number | null;
+  idFactura: number | null;
+  importe: number;
+  amortizacion: number;
+  fondoGarantia: number;
+  aditivas: number;
+  deductivas: number;
+  subtotal: number;
+  iva: number;
+  total: number;
+  anticipo: number;
+  linkEstimacionCliente: string | null;
+  cancelada: string;
+  fechaEliminacion: string;
+  UsuarioElimina: string | null;
+  fechaElimna: string | null;
+  NombreSecundario: string;
+  Comentario: string;
+};

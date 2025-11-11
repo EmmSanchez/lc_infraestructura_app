@@ -69,7 +69,7 @@ export default function Sidebar({
           );
         })}
       </div>
-      <div className="grow">{children}</div>
+      <div className="flex-1 overflow-auto grow">{children}</div>
     </div>
   );
 }

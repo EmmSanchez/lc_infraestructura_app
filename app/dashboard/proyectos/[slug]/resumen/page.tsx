@@ -1,6 +1,23 @@
+"use client";
+import { useProjectStore } from "@/app/stores/useProjectStore";
 import StatCard from "@/components/StatCard";
+import estimaciones from "@/app/data/estimacionesDatos.json";
+import { useMemo } from "react";
+import { formatCurrency } from "@/app/utils/formatCurrency";
 
 export default function page() {
+  const currentProject = useProjectStore((state) => state.currentProject);
+
+  const data = estimaciones.filter(
+    (estimacion) => estimacion.idContrato === currentProject?.idContrato
+  );
+
+  const valorAcumulado = useMemo(() => {
+    return data.reduce((acumulador, estimacion) => {
+      return acumulador + estimacion.total;
+    }, 0);
+  }, [data]);
+
   return (
     <div className="flex flex-col grow h-full px-10 py-6">
       <section className="flex flex-col gap-6 w-full max-w-7xl mx-auto">
@@ -8,17 +25,17 @@ export default function page() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-6">
           <StatCard
-            value={4}
+            value={data.length}
             label="Contratos Totales"
             key={"contratos-totales"}
           />
           <StatCard
-            value={"$11,500,000"}
+            value={formatCurrency(valorAcumulado)}
             label="Valor Total"
             key={"valor-total"}
           />
           <StatCard
-            value={"65%"}
+            value={currentProject?.Avance.toString() || "Desconocido"}
             label="Progreso Total"
             key={"progreso-total"}
           />

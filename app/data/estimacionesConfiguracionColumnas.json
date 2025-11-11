@@ -14,22 +14,8 @@
     }
   },
   {
-    "NombreColumna": "NombreSecundario",
-    "NombreMostrar": "Nombre Secundario",
-    "TipoColumna": "String",
-    "WidthDefault": "130",
-    "WidthMinima": "130",
-    "PropiedadesColumna": {
-      "EsEditable": false,
-      "EstaOculta": false
-    },
-    "Print": {
-      "Printable": true,
-      "WidthPercentage": "20"
-    }
-  },
-  {
     "NombreColumna": "fecha",
+    "NombreMostrar": "Fecha",
     "TipoColumna": "fecha",
     "WidthMinima": "110",
     "WidthMaxima": "110",
@@ -45,6 +31,7 @@
   },
   {
     "NombreColumna": "importe",
+    "NombreMostrar": "Importe",
     "TipoColumna": "number",
     "WidthDefault": "150",
     "WidthMinima": "120",
@@ -61,6 +48,7 @@
   },
   {
     "NombreColumna": "anticipo",
+    "NombreMostrar": "Anticipo",
     "TipoColumna": "number",
     "WidthDefault": "150",
     "WidthMinima": "120",
@@ -77,6 +65,7 @@
   },
   {
     "NombreColumna": "amortizacion",
+    "NombreMostrar": "Amortizacion",
     "TipoColumna": "number",
     "WidthDefault": "150",
     "WidthMinima": "120",
@@ -93,6 +82,7 @@
   },
   {
     "NombreColumna": "fondoGarantia",
+    "NombreMostrar": "Fondo Garantia",
     "TipoColumna": "number",
     "WidthDefault": "150",
     "WidthMinima": "120",
@@ -109,6 +99,7 @@
   },
   {
     "NombreColumna": "aditivas",
+    "NombreMostrar": "Aditivas",
     "TipoColumna": "number",
     "WidthDefault": "150",
     "WidthMinima": "120",
@@ -125,6 +116,7 @@
   },
   {
     "NombreColumna": "deductivas",
+    "NombreMostrar": "Deductivas",
     "TipoColumna": "number",
     "WidthDefault": "150",
     "WidthMinima": "120",
@@ -141,6 +133,7 @@
   },
   {
     "NombreColumna": "subtotal",
+    "NombreMostrar": "Subtotal",
     "TipoColumna": "number",
     "WidthDefault": "150",
     "WidthMinima": "120",
@@ -157,6 +150,7 @@
   },
   {
     "NombreColumna": "iva",
+    "NombreMostrar": "IVA",
     "TipoColumna": "number",
     "WidthDefault": "150",
     "WidthMinima": "120",
@@ -173,6 +167,7 @@
   },
   {
     "NombreColumna": "total",
+    "NombreMostrar": "Total",
     "TipoColumna": "number",
     "WidthDefault": "150",
     "WidthMinima": "120",
@@ -203,6 +198,7 @@
   },
   {
     "NombreColumna": "editarRegistro",
+    "NombreMostrar": "Editar Registro",
     "TipoColumna": "Icono",
     "WidthDefault": "250",
     "WidthMinima": "100",

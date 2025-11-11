@@ -1,9 +1,4 @@
 "use client";
-import { useProjectStore } from "@/app/stores/useProjectStore";
-import { Project } from "@/app/types/Project";
-import Image from "next/image";
-import Link from "next/link";
-import { ambientes } from "@/app/data/projects";
 import ContratoCard from "@/components/ContratoCard";
 import contratos from "@/app/data/contratosDatos.json";
 
