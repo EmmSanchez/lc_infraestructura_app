@@ -103,3 +103,45 @@ Please file feedback and issues over on the [Supabase GitHub org](https://github
 - [Next.js Subscription Payments Starter](https://github.com/vercel/nextjs-subscription-payments)
 - [Cookie-based Auth and the Next.js 13 App Router (free course)](https://youtube.com/playlist?list=PL5S4mPUpp4OtMhpnp93EFSo42iQ40XjbF)
 - [Supabase Auth and the Next.js App Router](https://github.com/supabase/supabase/tree/master/examples/auth/nextjs)
+
+## Conexión a Azure SQL desde la app (segura)
+
+Si quieres que la app consulte directamente una base de datos Azure SQL (ej. `dbo.Contratos`) desde el backend de Next.js, sigue estos pasos seguros:
+
+1. Instala la dependencia de cliente SQL en el proyecto (local):
+
+```powershell
+pnpm add mssql
+```
+
+2. Añade tus credenciales locales en un archivo `.env.local` en la raíz del repo (NO lo subas):
+
+```
+AZURE_SQL_SERVER=your-server.database.windows.net
+AZURE_SQL_USER=your_db_user
+AZURE_SQL_PASSWORD=your_db_password
+AZURE_SQL_DATABASE=your_database_name
+```
+
+El repositorio ya ignora `.env*.local` por defecto, así que no se añadirá al commit. Para CI o despliegue, usa Secrets (GitHub Actions, Vercel, etc.) y no subas las credenciales a Git.
+
+3. Ruta API de ejemplo
+
+Se ha añadido un handler de ejemplo en `app/api/v1/contratos/route.ts` que acepta POST con JSON `{ "idContrato": 253 }` y devuelve los campos `ImporteIVA`, `TotalContrato`, `contratoNombreCliente`, `fechaContratoCliente`.
+
+4. Uso desde la UI
+
+En la UI se añadió un botón azul "Consultar ambiente" en cada tarjeta de contrato (`components/ContratoCard.tsx`) que llama a la ruta y muestra el resultado.
+
+5. Seguridad y despliegue
+
+- No pongas las credenciales en el repo. Usa `.env.local` para desarrollo y secrets del proveedor para producción.
+- En GitHub Actions, añade los secrets `AZURE_SQL_USER`, `AZURE_SQL_PASSWORD`, `AZURE_SQL_SERVER`, `AZURE_SQL_DATABASE` y expónlos como variables de entorno en los pasos necesarios.
+- Revisa el firewall del servidor Azure SQL: añade tu IP pública (o rango) para permitir conexiones desde tu equipo y desde el servidor/hosting donde desplegues.
+
+Si quieres, puedo:
+
+- Ajustar la ruta para soportar varios ambientes (dev/staging/prod) y seleccionar la conexión adecuada.
+- Añadir validaciones y tests unitarios para la ruta.
+- Configurar un ejemplo de workflow en `.github/workflows` que use los secrets.
+
