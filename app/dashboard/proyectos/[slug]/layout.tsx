@@ -13,8 +13,8 @@ const sidebarLinks = [
     href: "resumen",
   },
   {
-    nombre: "Contratos",
-    href: "contratos",
+    nombre: "Estimaciones",
+    href: "estimaciones",
   },
   {
     nombre: "Fotos",
