@@ -16,7 +16,7 @@ export default function BackButtonClient() {
     <Link
       type="button"
       aria-label="Volver"
-      className="p-2 rounded-md hover:bg-gray-100 transition hover:cursor-pointer"
+      className="p-2 rounded-[8px] hover:bg-gray-100 transition hover:cursor-pointer"
       href={href}
     >
       <svg

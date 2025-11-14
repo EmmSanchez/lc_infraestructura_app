@@ -65,6 +65,22 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  // 4️⃣ Verifica el rol si intenta acceder al dashboard/admin
+  if (user && request.nextUrl.pathname.startsWith("/dashboard/admin")) {
+    // Busca su rol en la tabla 'profiles'
+    const { data: profile, error } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("email", user.email)
+      .single();
+
+    if (error || !profile || profile.role !== "admin") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/dashboard"; // lo rediriges al dashboard general
+      return NextResponse.redirect(url);
+    }
+  }
+
   // IMPORTANT: You *must* return the supabaseResponse object as it is.
   // If you're creating a new response object with NextResponse.next() make sure to:
   // 1. Pass the request in it, like so:

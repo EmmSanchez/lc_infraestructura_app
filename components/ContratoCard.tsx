@@ -109,7 +109,7 @@ export default function ContratoCard({ contrato, onOpen }: any) {
       <Link
         onClick={() => selectProject(contrato)}
         href={`/dashboard/proyectos/${contrato.idContrato}/resumen`}
-        className="w-full px-3 py-2 rounded-[8px] bg-[#3B82F6] text-white font-medium text-lg hover:bg-[#3B82F6]/90 transition-colors"
+        className="w-full px-3 py-2 rounded-[8px] bg-[#3B82F6] text-white font-medium text-lg text-center hover:bg-[#3B82F6]/90 transition-colors"
       >
         Ver detalles
       </Link>

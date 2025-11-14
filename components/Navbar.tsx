@@ -14,6 +14,8 @@ export default function Navbar() {
   const user = useUserStore((state) => state.user);
   const userName = user?.user_metadata.email || user?.email;
 
+  console.log(" hola");
+
   return (
     <nav className="flex items-center justify-between px-11 h-[100px] border-solid border-b-[1px] border-b-gray-400">
       <div className="flex items-center gap-4">

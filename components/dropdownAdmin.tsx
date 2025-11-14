@@ -83,53 +83,13 @@ export default function AdminProjects({ contractID }: AdminProjectsProps) {
 
   useEffect(() => {
     const getProfiles = async () => {
-      try {
-        const { data: profiles, error: profilesError } = await supabase
-          .from("profiles")
-          .select("id, email, role")
-          .neq("role", "admin");
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("id, email, role")
+        .neq("role", "admin"); // <-- AÑADE ESTA LÍNEA
 
-        if (profilesError) {
-          console.error("Error al obtener usuarios:", profilesError);
-          setUsers([]);
-          return;
-        }
-
-        // obtener las asignaciones actuales para este contrato y excluir los ya asignados
-        const { data: assigned, error: assignedError } = await supabase
-          .from("user_project_assignments")
-          .select("user_email")
-          .eq("contract_id", contractID);
-
-        if (assignedError) {
-          console.error("Error al obtener asignaciones para filtro:", assignedError);
-        }
-
-        const assignedEmails = new Set((assigned || []).map((a: any) => a.user_email));
-
-        // dominios/ emails permitidos configurables (NEXT_PUBLIC_ALLOWED_EMAIL_DOMAINS, NEXT_PUBLIC_ALLOWED_EMAILS)
-        const allowedDomainsEnv = (process.env.NEXT_PUBLIC_ALLOWED_EMAIL_DOMAINS || "outlook.com,hotmail.com,microsoft.com").split(",").map(s => s.trim().toLowerCase()).filter(Boolean);
-        const allowedEmailsEnv = (process.env.NEXT_PUBLIC_ALLOWED_EMAILS || "").split(",").map(s => s.trim().toLowerCase()).filter(Boolean);
-
-        // filtrar perfiles: permitir solo correos en dominios permitidos o listados explícitamente,
-        // además ocultar admin@lc.com y usuarios ya asignados
-        const filtered = (profiles || []).filter((p: any) => {
-          if (!p || !p.email) return false;
-          const email = p.email.toString().toLowerCase();
-          if (email === "admin@lc.com") return false; // ocultar super-admin siempre
-          if (assignedEmails.has(p.email)) return false; // ocultar ya asignados
-
-          const domain = email.split("@").pop() || "";
-          const allowedByDomain = allowedDomainsEnv.includes(domain);
-          const allowedByEmail = allowedEmailsEnv.includes(email);
-          return allowedByDomain || allowedByEmail;
-        });
-
-        setUsers(filtered as User[]);
-      } catch (err) {
-        console.error("Error al cargar perfiles para asignación:", err);
-        setUsers([]);
-      }
+      if (error) console.error("Error al obtener usuarios:", error);
+      else setUsers(data);
     };
 
     getProfiles();
@@ -150,7 +110,9 @@ export default function AdminProjects({ contractID }: AdminProjectsProps) {
         {/* Botón rojo para eliminar asignaciones del proyecto */}
         <button
           onClick={async () => {
-            const ok = confirm("¿Eliminar todas las asignaciones de usuarios para este proyecto?");
+            const ok = confirm(
+              "¿Eliminar todas las asignaciones de usuarios para este proyecto?"
+            );
             if (!ok) return;
             try {
               const { error } = await supabase
@@ -174,8 +136,19 @@ export default function AdminProjects({ contractID }: AdminProjectsProps) {
           title="Eliminar asignaciones"
           className="flex items-center justify-center w-9 h-9 rounded-[8px] bg-red-600 text-white hover:bg-red-700"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"
+            />
           </svg>
         </button>
       </div>
